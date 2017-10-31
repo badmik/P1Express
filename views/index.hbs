@@ -1,18 +1,3 @@
-<header>
-    <div class="wrapper">
-        <div class="left">
-            <button class="btn success" id="btnAddTask" onclick="location.href='edit';">New Task</button>
-        </div>
-        <div class="right">
-            <select class="styleSwitcher">
-                <option value="dark">Dark</option>
-                <option value="Light">Light</option>
-            </select>
-        </div>
-    </div>
-</header>
-
-<main id="containerTasks"></main>
 <section class="sort">
     <button class="btn default">Sort by due</button>
     <button class="btn default">Sort by created</button>
@@ -20,9 +5,11 @@
     <button class="btn default">Show finished</button>
 </section>
 
+
+<main id="containerTasks">
 <script id="task-list-template" type="text/x-handlebars-template">
     {{#each task}}
-        <li class="liItem">
+        <li class="liItem_{{@index}}">
             <div>
                 <label for="checkBox"><input id="checkBox" type="checkbox"><span class="date">{{date}}</span> <span class="title">{{title}}</span>
                     <span class="description">{{description}}</span><button class="btn info" data-edit-btn-{{task.id}}>Edit</button></label>
@@ -30,5 +17,4 @@
         </li>
     {{/each}}
 </script>
-
-
+</main>

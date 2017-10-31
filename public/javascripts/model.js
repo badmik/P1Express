@@ -1,7 +1,11 @@
-import {default as taskStorage} from "./data.js";
+const taskStorage = require('./data.js');
 
-class Task {
-    constructor(name = "", description = "", date) {
+const mongoose = require('mongoose');
+
+const schema = new Schema({ name: String, description: String, date: String});
+
+class TaskClass {
+    constructor(name = "", description = "", date = "") {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -42,6 +46,9 @@ class TaskManager {
 }
 
 
+schema.loadClass(TaskClass);
+const Task = db.model('Task', schema);
+
 class Controller {
     constructor() {
         this.taskManager = new TaskManager(new TaskManager());
@@ -70,4 +77,7 @@ class Controller {
 })(jQuery);
 
 
-export default { TaskManager, Controller };
+module.exports = TaskManager(); Controller (); Task();
+
+
+

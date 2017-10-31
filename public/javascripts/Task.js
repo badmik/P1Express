@@ -1,4 +1,7 @@
-import {default as model} from "./model.js";
+
+
+const model = require('./model.js');
+
 
 ;(function($) {
 
